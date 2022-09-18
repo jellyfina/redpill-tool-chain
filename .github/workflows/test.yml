@@ -62,7 +62,7 @@ jobs:
           sed -i -e 's/0x0001/0x88AA/g' -e 's/0x46f4/0x88AA/g' ${{matrix.platform}}_user_config.json
 
           # 调整SN和MAC,最好使用 actions secrets 引入,SN应该是固定值不应该每次生成
-          sn=`./redpill_tool_chain.sh sn ${{1940PDN445501}} | grep 'Serial Number' | awk '{print $3}'`
+          # sn=`./redpill_tool_chain.sh sn ${{1940PDN445501}} | grep 'Serial Number' | awk '{print $3}'`
           sed -i -e "s/1940PDN445501/${sn:="1940PDN445501"}/g" -e 's/1940PDN445501/001132A9F9F2/g' ${{matrix.platform}}_user_config.json
 
           # 添加第二张网卡mac并设置网卡数量
